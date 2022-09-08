@@ -3,11 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PizzaWebsite.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
+
+        public DbSet<Pizza> Pizzas { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PizzaWebsite.Data;
+using PizzaWebsite.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,8 @@ builder.Services.Configure<RouteOptions>(options =>
     options.LowercaseQueryStrings = true;
     options.LowercaseUrls = true;
 });
+
+builder.Services.AddScoped<GetPostService>();
 
 var app = builder.Build();
 

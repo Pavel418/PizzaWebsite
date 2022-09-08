@@ -1,0 +1,22 @@
+﻿@page 
+@model PizzaWebsite.Pages.MenuModel
+@{
+    ViewData["Title"] = "Menu";
+}
+
+
+<h1 id="ourmenu">Our Menu</h1>
+<div>
+   <nav>
+       <ul class="menu-list">
+            @{
+                for (int i = 0; i < 10; i++) {
+                        <li><a ><img src="~/img/Pizza.png" /></a></li>
+                }
+            }
+
+       </ul>
+   </nav>
+        
+    
+</div>

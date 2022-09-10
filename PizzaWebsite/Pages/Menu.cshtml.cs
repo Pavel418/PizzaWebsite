@@ -7,11 +7,12 @@ namespace PizzaWebsite.Pages
 {
     public class MenuModel : PageModel
     {
-        public ICollection<Pizza>? Pizzas { get; set; }
+        public ICollection<Pizza> Pizzas { get; set; }
+        public FileInfo[] ImageSources { get; set; }
 
-        GetPostService _service;
+        PostService _service;
 
-        public MenuModel(GetPostService service)
+        public MenuModel(PostService service)
         {
             _service = service;
         }

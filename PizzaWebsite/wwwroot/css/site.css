@@ -24,3 +24,6 @@ header{
 .nav-item:hover{
     color:red !important;
 }
+a {
+    color: #212529;
+}

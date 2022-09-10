@@ -26,3 +26,18 @@ body {
     height:500px;
 }
     */
+
+header {
+    position: fixed;
+    width: 100%;
+    
+}
+
+.pizza-banner{
+    height:20rem;
+    margin-left:auto;
+}
+
+.websiteh1{
+    padding-top:10%;
+}

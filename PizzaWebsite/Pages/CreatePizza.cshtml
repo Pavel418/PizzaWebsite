@@ -1,0 +1,48 @@
+﻿@page
+@model PizzaWebsite.Pages.CreatePizzaModel
+@{
+    ViewData["Title"] = "Create Pizza";
+}
+
+<form enctype="multipart/form-data" method="post">
+    <dl>
+        <dt>
+            <label asp-for="Input.Name"></label>
+        </dt>
+        <dd>
+            <input asp-for="Input.Name" type="text">
+            <span asp-validation-for="Input.Name"></span>
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            <label asp-for="Input.Price"></label>
+        </dt>
+        <dd>
+            <input asp-for="Input.Price" type="number">
+            <span asp-validation-for="Input.Price"></span>
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            <label asp-for="Input.Ingredients"></label>
+        </dt>
+        <dd>
+            <input asp-for="Input.Ingredients" type="text">
+            <span asp-validation-for="Input.Ingredients"></span>
+        </dd>
+    </dl>
+    <dl>
+        <dt>
+            <label asp-for="Input.Image"></label>
+        </dt>
+        <dd>
+            <input asp-for="Input.Image" type="file">
+            <span asp-validation-for="Input.Image"></span>
+        </dd>
+    </dl>
+    <div asp-validation-summary="ModelOnly">
+        <span>Please correct the following errors</span>
+    </div>
+    <input asp-page-handler="Upload" class="btn" type="submit" value="Upload" />
+</form>

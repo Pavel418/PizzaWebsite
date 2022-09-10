@@ -30,7 +30,12 @@ builder.Services.Configure<RouteOptions>(options =>
     options.LowercaseUrls = true;
 });
 
-builder.Services.AddScoped<GetPostService>();
+builder.Services.AddScoped<PostService>();
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Admin", policyBuilder => policyBuilder.RequireClaim("Admin"));
+});
 
 var app = builder.Build();
 

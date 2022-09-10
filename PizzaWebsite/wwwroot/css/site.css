@@ -15,29 +15,12 @@ html {
 
 body {
   margin-bottom: 60px;
-}
-/*
-.display-4{
-    font-family: serif;
-    font-weight:900;
+  margin-top:5%;
 }
 
-.pizza-banner{
-    height:500px;
+header{
+    z-index:10;
 }
-    */
-
-header {
-    position: fixed;
-    width: 100%;
-    
-}
-
-.pizza-banner{
-    height:20rem;
-    margin-left:auto;
-}
-
-.websiteh1{
-    padding-top:10%;
+.nav-item:hover{
+    color:lightgray;
 }

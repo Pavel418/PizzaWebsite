@@ -1,6 +1,5 @@
 ﻿@page "{id:int}"
 @model PizzaWebsite.Pages.ViewPizzaModel
-
 @{
     ViewData["Title"] = "ViewPizza";
 }
@@ -33,8 +32,13 @@
     </dl>
     
     <form method="post">
-        <input type="hidden" asp-for="Pizza.PizzaId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        @{
+            if (Model.CanDeletePizza)
+            {
+                <input type="hidden" asp-for="Pizza.PizzaId" />
+                <input type="submit" value="Delete" class="btn btn-danger"/>
+            }
+        }
         <a asp-page="./Menu">Back to List</a>
     </form>
 </div>

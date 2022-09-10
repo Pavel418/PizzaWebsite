@@ -1,0 +1,36 @@
+﻿@page
+@model PizzaWebsite.Pages.ManageAdminsModel
+
+@{
+    ViewData["Title"] = "Manage Admins";
+}
+
+<h1>Admins:</h1>
+<ol>
+@{
+    foreach (var user in Model.Admins)
+    {
+        <li>
+            <form asp-route-id=@user.Id method="post">
+                <label>@user.UserName</label>
+                 <input asp-page-handler="RemoveAdmin" type="submit" value="Remove Admin">
+            </form>
+        </li>
+    }
+}
+</ol>
+
+<h1>Not Admins:</h1>
+<ol>
+@{
+    foreach (var user in Model.NotAdmins)
+    {
+        <li>
+            <form asp-route-id=@user.Id method="post">
+                <label>@user.UserName</label>
+                 <input asp-page-handler="MakeAdmin" type="submit" value="Make Admin">
+            </form>
+        </li>
+    }
+}
+</ol>

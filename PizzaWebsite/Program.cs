@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using PizzaWebsite.Data;
 using PizzaWebsite.Services;
@@ -7,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Configuration.AddEnvironmentVariables();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
@@ -30,7 +33,8 @@ builder.Services.Configure<RouteOptions>(options =>
     options.LowercaseUrls = true;
 });
 
-builder.Services.AddScoped<PostService>();
+builder.Services.AddScoped<PostService>()
+                .AddScoped<IEmailSender, EmailSenderService>();
 
 builder.Services.AddAuthorization(options =>
 {

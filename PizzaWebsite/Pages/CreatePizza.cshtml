@@ -7,10 +7,10 @@
 <form enctype="multipart/form-data" method="post">
     <dl>
         <dt>
-            <label  asp-for="Input.Name"></label>
+            <label asp-for="Input.Name"></label>
         </dt>
         <dd>
-            <input  asp-for="Input.Name" type="text">
+            <input asp-for="Input.Name" type="text">
             <span asp-validation-for="Input.Name"></span>
         </dd>
     </dl>
@@ -44,6 +44,6 @@
     <div asp-validation-summary="ModelOnly">
         <span>Please correct the following errors</span>
     </div>
-    <input asp-page-handler="Upload" class="btn btn-outline-dark" type="submit" value="Upload" />
+    <input class="btn btn-outline-dark" type="submit" value="Upload" />
 
 </form>

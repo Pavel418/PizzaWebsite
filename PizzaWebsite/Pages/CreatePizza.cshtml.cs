@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PizzaWebsite.Pages
 {
-    //[Authorize]
+    [Authorize("Admin")]
     public class CreatePizzaModel : PageModel
     {
         [BindProperty]

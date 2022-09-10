@@ -12,7 +12,7 @@
                 foreach (var pizza in Model.Pizzas)
                 {                    
                     <li>
-                        <a><img src="~/img/pizza-images/@pizza.ImageLocation" /></a>
+                        <a href="/ViewPizza/@pizza.PizzaId"><img src="~/img/pizza-images/@pizza.ImageLocation" /></a>
                     </li>
                 }
             }

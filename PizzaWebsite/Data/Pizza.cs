@@ -7,9 +7,9 @@ namespace PizzaWebsite.Data
     {
         [Key]
         public int PizzaId { get; set; }
-        public string? Name { get; set; }
+        public string Name { get; set; }
         public float Price { get; set; }
-        public string? Ingredients { get; set; }
-        public string? ImageLocation { get; set; }
+        public string Ingredients { get; set; }
+        public string ImageLocation { get; set; }
     }
 }

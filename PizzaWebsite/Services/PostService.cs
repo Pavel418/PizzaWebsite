@@ -30,6 +30,21 @@ namespace PizzaWebsite.Services
                 .ToListAsync();
         }
 
+        public async Task<Pizza> GetPizzaByID(int? id)
+        {
+            if (id == null || _context.Pizzas == null)
+            {
+                throw new ArgumentException("ID is null");
+            }
+            var pizza = await _context.Pizzas.FindAsync(id);
+            if (pizza == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            return pizza;
+        }
+
         public async Task<int> AddPizzaAsync(CreatePizzaCommand command)
         {
             string wwwRootPath = _environment.WebRootPath;
@@ -68,6 +83,28 @@ namespace PizzaWebsite.Services
             await _context.SaveChangesAsync();
 
             return pizza.PizzaId;
+        }
+
+        public async Task DeletePizza(int? id)
+        {
+            if (id == null || _context.Pizzas == null)
+            {
+                throw new ArgumentException("ID is null");
+            }
+            var pizza = await _context.Pizzas.FindAsync(id);
+
+            if (pizza != null)
+            {
+                _context.Pizzas.Remove(pizza);
+                await _context.SaveChangesAsync();
+
+                string wwwRootPath = _environment.WebRootPath;
+                string path = Path.Combine(wwwRootPath, @"img\pizza-images", pizza.ImageLocation);
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
         }
     }
 }

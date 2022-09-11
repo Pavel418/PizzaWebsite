@@ -11,9 +11,9 @@
     foreach (var user in Model.Admins)
     {
         <li>
-            <form asp-route-id=@user.Id method="post">
+            <form method="post">
                 <label>@user.UserName</label>
-                 <input asp-page-handler="RemoveAdmin" type="submit" value="Remove Admin">
+                 <input asp-page-handler="RemoveAdmin" asp-route-id=@user.Id type="submit" value="Remove Admin">
             </form>
         </li>
     }
@@ -26,9 +26,9 @@
     foreach (var user in Model.NotAdmins)
     {
         <li>
-            <form asp-route-id=@user.Id method="post">
+            <form method="post">
                 <label>@user.UserName</label>
-                 <input asp-page-handler="MakeAdmin" type="submit" value="Make Admin">
+                 <input asp-page-handler="MakeAdmin" asp-route-id="@user.Id" type="submit" value="Make Admin">
             </form>
         </li>
     }

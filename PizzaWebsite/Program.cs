@@ -29,12 +29,12 @@ builder.Services.AddRazorPages();
 builder.Services.Configure<RouteOptions>(options =>
 {
     options.AppendTrailingSlash = true;
-    options.LowercaseQueryStrings = true;
+    options.LowercaseQueryStrings = false;
     options.LowercaseUrls = true;
 });
 
 builder.Services.AddScoped<PostService>()
-                .AddScoped<IEmailSender, EmailSenderService>();
+                .AddTransient<IEmailSender, EmailSenderService>();
 
 builder.Services.AddAuthorization(options =>
 {

@@ -14,16 +14,33 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
-  margin-top:5%;
+    margin-bottom: 60px;
+    margin-top: 60px;
+    
 }
 
-header{
-    z-index:10;
+header {
+    z-index: 10;
+    
 }
 .nav-item:hover{
     color:red !important;
 }
+a:hover {
+    
+    color: #ad2122
+}
+
 a {
     color: #212529;
+}
+#startIcon{
+    height:40px;
+}
+
+#reg{
+    padding-top:3%;
+}
+#log{
+    padding-top:3%;
 }

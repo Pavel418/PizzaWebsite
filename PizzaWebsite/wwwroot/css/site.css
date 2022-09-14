@@ -44,3 +44,14 @@ a {
 #log{
     padding-top:3%;
 }
+
+.slider-wrap {
+    /*border: solid 2px #000;*/
+    overflow: hidden;
+}
+
+.slider{
+    display: flex;
+    transition: all ease 1s;
+}
+

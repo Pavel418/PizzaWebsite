@@ -58,3 +58,8 @@ let timer = setInterval(function () {
     }
     rollSlider();
 }, 5000);
+
+
+
+
+

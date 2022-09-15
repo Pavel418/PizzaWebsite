@@ -5,7 +5,6 @@
     ViewData["Title"] = "Log in";
 }
 
-
 <div id="log" class="row">
     <h1>@ViewData["Title"]</h1>
     <div class="col-md-4">
@@ -15,9 +14,9 @@
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating mb-3">
-                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <input id="emailinput" asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
                     <label asp-for="Input.Email" class="form-label"></label>
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    <span id="emailspan" asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
                 <div class="form-floating mb-3">
                     <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Password" />
@@ -80,6 +79,22 @@
         </section>
     </div>
 </div>
+
+
+<script>
+    window.setInterval(function(){
+    let obj1 = document.getElementById("emailinput-error");
+    let obj2 = document.getElementById("emailinput");
+        console.log(obj1);
+        if(obj1 != null){
+            obj2.classList.add("is-invalid");
+        }
+        else{
+            obj2.classList.remove("is-invalid");
+        }
+    }, 100);
+    
+</script>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

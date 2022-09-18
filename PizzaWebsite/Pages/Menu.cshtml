@@ -10,8 +10,22 @@
         @{
             foreach (var pizza in Model.Pizzas)
             {
-                <div class="col">
-                    <a href="/ViewPizza/@pizza.PizzaId"><img src="~/img/pizza-images/@pizza.ImageLocation" /></a>
+                <div class="col-md-3 col-sm-12 text-center " style="display:flex; justify-content: center;">
+                    <div class="card scale shadow-sm " style="width: 18rem;">
+                        <img src="~/img/pizza-images/@pizza.ImageLocation" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@pizza.Name</h5>
+                            <p class="card-text">@pizza.Ingredients</p>
+                            <div class="row mt-5 mb-2">
+                                <div class="col-md-6">
+                                    <a asp-page="/ViewPizza" asp-route-id="@pizza.PizzaId" class="btn btn-outline-danger btn-lg">Choose</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="price my-4"><h6>@pizza.Price $</h6></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             }
         }

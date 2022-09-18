@@ -15,12 +15,13 @@ html {
 
 body {
     margin-bottom: 60px;
-    margin-top: 60px;
+    /*margin-top: 60px;*/
     background-color: #f3f3f7;
 }
 
 header {
     z-index: 10;
+
 
     
 }
@@ -138,7 +139,7 @@ Slider
 */
 
 
-.scale:hover {
+    .scale:hover {
     transform: scale(1.1);
     transition:all ease 0.3s;
 }
@@ -158,3 +159,8 @@ p{
 h6{
     font-weight:700;
 }
+
+.btn{
+    border-radius:25px !important;
+}
+

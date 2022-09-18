@@ -21,6 +21,7 @@ body {
 
 header {
     z-index: 10;
+
     
 }
 .nav-item:hover{
@@ -144,4 +145,16 @@ Slider
 
 .card {
     border-radius: 18px;
+}
+
+h1 {
+    color: rgb(36, 36, 36);
+}
+
+p{
+    color: rgb(120, 124, 130);
+}
+
+h6{
+    font-weight:700;
 }

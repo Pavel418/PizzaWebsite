@@ -5,18 +5,36 @@
 }
 
 
-<!--
+
 <main id="bgc">
     <div class="carousel slide mb-5" id="carouselControls" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class"d-block w-100" src="https://staticy.dominospizza.ru/api/medium/Banner/Web/589/NULL/NULL/RU" />
+                <div class="d-none d-md-block">
+                    <img src="~/img/pbanner1.jpg" alt="">
+                </div>
+
+                <div class="d-md-none">
+                    <img src="~/img/pbanner1-800px.jpg" alt="">
+                </div>
             </div>
             <div class="carousel-item">
-                <img class"d-block w-100" src="~/img/pbanner1.jpg" />
+                <div class="d-none d-md-block">
+                    <img src="~/img/pbanner1.jpg" alt="">
+                </div>
+
+                <div class="d-md-none">
+                    <img src="~/img/pbanner1-800px.jpg" alt="">
+                </div>
             </div>
             <div class="carousel-item">
-                <img class"d-block w-100" src="https://staticy.dominospizza.ru/api/medium/Banner/Web/463/NULL/NULL/RU" />
+                <div class="d-none d-md-block">
+                    <img src="~/img/pbanner1.jpg" alt="">
+                </div>
+
+                <div class="d-md-none">
+                    <img src="~/img/pbanner1-800px.jpg" alt="">
+                </div>
             </div>
         </div>
 
@@ -30,7 +48,59 @@
     </div>
 </main>
 
--->
+
+<div class="container  my-5 text-center">
+    <h2 class="my-5">Special offers</h2>
+    <div class="row  gy-5 ">
+        <div class="col-md-3 col-sm-12 text-center " style="display:flex ;justify-content: center;">
+            <div class="card scale shadow-sm " style="width: 18rem;">
+                <img src="~/img/Pizza.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Summer set</h5>
+                    <p class="card-text">Pizza + Coca cola + French fries only for 12.99!</p>
+                    <a href="#" class="btn btn-outline-danger">Order</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-12 text-center" style="display:flex ;justify-content: center;">
+            <div class="card scale shadow-sm" style="width: 18rem;">
+                <img src="~/img/Pizza.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Offer</h5>
+                    <p class="card-text">Offer body</p>
+                    <a href="#" class="btn btn-outline-danger">Order</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-12 text-center" style="display:flex ;justify-content: center;">
+            <div class="card scale shadow-sm" style="width: 18rem;">
+                <img src="~/img/Pizza.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Offer</h5>
+                    <p class="card-text">Offer body.</p>
+                    <a href="#" class="btn btn-outline-danger">Order</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-12 text-center" style="display:flex ;justify-content: center;">
+            <div class="card scale shadow-sm" style="width: 18rem;">
+                <img src="~/img/Pizza.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Offer</h5>
+                    <p class="card-text">Offer body.</p>
+                    <a href="#" class="btn btn-outline-danger">Order</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="my-5">
+        <p p-0>See more in <a asp-page="/Menu">Menu</a></p>
+    </div>
+</div>
+
+
+
+<!--
 
 <div class="slider-wrap">
     <div class="slider">
@@ -46,32 +116,55 @@
 
 
 
-<!--
-<div class="row">
-    <div class="column">
-        <img class="" src="~/img/Pizza.png"/>
-        <button class="w-25 mb-2 btn btn-lg btn-outline-danger">Order</button>
-    </div>
+<div class="container">
+    <div class="carouselContainer">
+        <div class="carouselSlides">
+            <img id="lastClone" src="~/img/pbanner1.jpg" class="slide" alt="">
+            <picture class="slide">
+                <source media="(max-width: 799px)" srcset="~/img/pbanner1-800px.jpg">
+                <source media="(min-width: 800px)" srcset="~/img/pbanner1.jpg">
+                <img src="~/img/pbanner1.jpg" alt="">
+            </picture>
+            <img src="~/img/pbanner1.jpg" class="slide" alt="">
+            <img src="~/img/pbanner1.jpg" class="slide" alt="">
+            <img src="~/img/pbanner1.jpg" class="slide" alt="">
+            <img id="firstClone" src="~/img/pbanner1.jpg" class="slide" alt="">
+        </div>
+        <div class="butnContainer">
+            <div class="butn" id="prev"></div>
+            <div class="butn" id="next"></div>
+        </div>
+     </div>
+
+     <div class="container">
+        <div class="row">
+            <div class="col">
+                <img class="" src="~/img/Pizza.png" />
+                <button class="buttons w-25 mb-2 btn btn-lg btn-outline-danger">Order</button>
+            </div>
+
+        </div>
+     </div>
 
 </div>
 -->
-
-
-<div class ="facts">
-    <sector>
-        <h2>Pizza delivery</h2>
-        <article>
-            <p>
-                Round-the-clock ordering and delivery of pizza to your home in the city - pizzaonline.uz. Ordering a delicious Italian dish - pizza with delivery is easy. The list of pizzerias involved in its preparation is presented on the pages of our website pizzaonline.uz. We have collected complete information about establishments for easy search and ordering food to your home, office or any other place. Information about the cost of delivery, time, etc. helps you quickly choose a cafe or restaurant. You can place an order and free delivery of pizza in Baku online by calling or through our application.
-        </article>
-    </sector>
-    <sector>
-        <h2>Where do we get the ingredients?</h2>
-        <article>
-            <p>
-                Biotechnological ingredients are "grown" either using microorganisms, or - special biotechnological processes: for example, shikonin is obtained from the calus culture of red-root sparrow cells, an extract of ginseng biomass. With the direct use of microorganisms, our vitamins are produced: β-carotene and vitamin C. Such components, of course, are absolutely free from agricultural pollutants. In general, finding areas that are not contaminated with pesticides on the map is not such an easy task. Although we track the production chains of our ingredients. Natural raw materials are mainly grown (much less often - wild plants are collected) in environmentally friendly areas. Here are some examples: blueberry - Karelian, mummy - Altai, thistle - also native, Volga, but aloe - from Georgia. Some ingredients come to us from European countries.
-            </p>
-        </article>
-    </sector>
+<div class ="container facts">
+    <div class="row">
+        <div class="col-md-4 col-sm-12 text-center">
+            <h2>Pizza delivery</h2>
+            <article>
+                <p>
+                    Round-the-clock ordering and delivery of pizza to your home in the city - pizzaonline.uz. Ordering a delicious Italian dish - pizza with delivery is easy. The list of pizzerias involved in its preparation is presented on the pages of our website pizzaonline.uz. We have collected complete information about establishments for easy search and ordering food to your home, office or any other place. Information about the cost of delivery, time, etc. helps you quickly choose a cafe or restaurant. You can place an order and free delivery of pizza in Baku online by calling or through our application.
+            </article>
+        </div>
+        <div class="col-md-8 col-sm-12 text-center">
+            <h2>Where do we get the ingredients?</h2>
+            <article>
+                <p>
+                    Biotechnological ingredients are "grown" either using microorganisms, or - special biotechnological processes: for example, shikonin is obtained from the calus culture of red-root sparrow cells, an extract of ginseng biomass. With the direct use of microorganisms, our vitamins are produced: β-carotene and vitamin C. Such components, of course, are absolutely free from agricultural pollutants. In general, finding areas that are not contaminated with pesticides on the map is not such an easy task. Although we track the production chains of our ingredients. Natural raw materials are mainly grown (much less often - wild plants are collected) in environmentally friendly areas. Here are some examples: blueberry - Karelian, mummy - Altai, thistle - also native, Volga, but aloe - from Georgia. Some ingredients come to us from European countries.
+                </p>
+            </article>
+        </div>
+    </div>
 </div >
 

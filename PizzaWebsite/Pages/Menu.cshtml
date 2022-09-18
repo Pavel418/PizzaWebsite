@@ -5,17 +5,16 @@
 }
 
 <h1>Our Menu</h1>
-<div>
-   <nav>
-       <ul class="menu-list">
-            @{
-                foreach (var pizza in Model.Pizzas)
-                {                    
-                    <li>
-                        <a href="/ViewPizza/@pizza.PizzaId"><img src="~/img/pizza-images/@pizza.ImageLocation" /></a>
-                    </li>
-                }
+<div class="container">
+    <div class="row my-5">
+        @{
+            foreach (var pizza in Model.Pizzas)
+            {
+                <div class="col">
+                    <a href="/ViewPizza/@pizza.PizzaId"><img src="~/img/pizza-images/@pizza.ImageLocation" /></a>
+                </div>
+
             }
-       </ul>
-   </nav>
+        }
+    </div>
 </div>

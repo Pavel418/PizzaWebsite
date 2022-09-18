@@ -1,20 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using PizzaWebsite.Data;
 
 namespace PizzaWebsite.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        public List<Pizza> SpecialPizzas { get; set; } = new();
 
-        public IndexModel(ILogger<IndexModel> logger)
+        private readonly ApplicationDbContext _context;
+
+        public IndexModel(ApplicationDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public void OnGet()
         {
-
+            SpecialPizzas = _context.Pizzas.Where(x => x.IsSpecialOffer).ToList();
         }
     }
 }

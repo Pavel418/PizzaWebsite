@@ -106,5 +106,20 @@ namespace PizzaWebsite.Services
                 }
             }
         }
+
+        public async Task ChangeSpecialOffer(bool isSpecial, int? id)
+        {
+            if (id == null || _context.Pizzas == null)
+            {
+                throw new ArgumentException("ID is null");
+            }
+            var pizza = await _context.Pizzas.FindAsync(id);
+
+            if (pizza != null)
+            {
+                pizza.IsSpecialOffer = isSpecial;
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

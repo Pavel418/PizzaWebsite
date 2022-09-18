@@ -13,7 +13,9 @@ namespace PizzaWebsite.Pages
 {
     public class ViewPizzaModel : PageModel
     {
-        public bool CanDeletePizza { get; set; }
+        public bool IsAdmin { get; set; }
+        [BindProperty]
+        public bool ChangeSpecial { get; set; }
 
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _environment;
@@ -34,7 +36,7 @@ namespace PizzaWebsite.Pages
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             var isAuthorised = await _authService.AuthorizeAsync(User, policyName: "Admin");
-            CanDeletePizza = isAuthorised.Succeeded;
+            IsAdmin = isAuthorised.Succeeded;
 
             try
             {
@@ -48,7 +50,7 @@ namespace PizzaWebsite.Pages
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostDeleteAsync(int? id)
         {
             var authResult = await _authService.AuthorizeAsync(User, policyName: "Admin");
             if (!authResult.Succeeded)
@@ -66,6 +68,25 @@ namespace PizzaWebsite.Pages
             }
 
             return RedirectToPage("./Index");
+        }
+
+        public async Task<IActionResult> OnPostChangeSpecialAsync(int id)
+        {
+            var authResult = await _authService.AuthorizeAsync(User, policyName: "Admin");
+            if (!authResult.Succeeded)
+            {
+                return new ForbidResult();
+            }
+
+            try
+            {
+                await _postService.ChangeSpecialOffer(!ChangeSpecial, id);
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
+            return RedirectToPage("ViewPizza", new { id });
         }
     }
 }

@@ -52,77 +52,28 @@
 <div class="container  my-5 text-center">
     <h2 class="my-5">Special offers</h2>
     <div class="row  gy-5 ">
-        <div class="col-md-3 col-sm-12 text-center " style="display:flex ;justify-content: center;">
-            <div class="card scale shadow-sm " style="width: 18rem;">
-                <img src="~/img/Pizza.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Summer set</h5>
-                    <p class="card-text">Pizza + Coca cola + French fries</p>
-                    <div class="row mt-5 mb-2">
-                        <div class="col-md-6">
-                            <a href="#" class="btn btn-outline-danger">Choose</a>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="price"><h6>from 12.99 $</h6></div>
-                        </div>
-                    </div>
-                    
-                    
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-12 text-center" style="display:flex ;justify-content: center;">
-            <div class="card scale shadow-sm" style="width: 18rem;">
-                <img src="~/img/Pizza.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Offer</h5>
-                    <p class="card-text">Offer body</p>
-                    <div class="row mt-5 mb-2">
-                        <div class="col-md-6">
-                            <a href="#" class="btn btn-outline-danger">Choose</a>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="price"><h6>from 12.99 $</h6></div>
+        @{
+            foreach (var pizza in Model.SpecialPizzas)
+            {
+                <div class="col-md-3 col-sm-12 text-center " style="display:flex; justify-content: center;">
+                    <div class="card scale shadow-sm " style="width: 18rem;">
+                        <img src="~/img/pizza-images/@pizza.ImageLocation" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@pizza.Name</h5>
+                            <p class="card-text">@pizza.Ingredients</p>
+                            <div class="row mt-5 mb-2">
+                                <div class="col-md-6">
+                                    <a asp-page="/ViewPizza" asp-route-id="@pizza.PizzaId" class="btn btn-outline-danger">Choose</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="price"><h6>@pizza.Price $</h6></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-12 text-center" style="display:flex ;justify-content: center;">
-            <div class="card scale shadow-sm" style="width: 18rem;">
-                <img src="~/img/Pizza.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Offer</h5>
-                    <p class="card-text">Offer body.</p>
-                    <div class="row mt-5 mb-2">
-                        <div class="col-md-6">
-                            <a href="#" class="btn btn-outline-danger">Choose</a>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="price"><h6>from 12.99 $</h6></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-12 text-center" style="display:flex ;justify-content: center;">
-            <div class="card scale shadow-sm" style="width: 18rem;">
-                <img src="~/img/Pizza.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Offer</h5>
-                    <p class="card-text">Offer body.</p>
-                    <div class="row mt-5 mb-2">
-                        <div class="col-md-6">
-                            <a href="#" class="btn btn-outline-danger">Choose</a>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="price"><h6>from 12.99 $</h6></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+            }
+        }
     <div class="my-5">
         <p p-0>See more in <a asp-page="/Menu">Menu</a></p>
     </div>

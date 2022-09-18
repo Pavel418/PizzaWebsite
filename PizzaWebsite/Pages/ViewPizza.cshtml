@@ -6,7 +6,6 @@
 
 <h1>ViewPizza</h1>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>Pizza</h4>
     <hr/>
@@ -33,10 +32,24 @@
     
     <form method="post">
         @{
-            if (Model.CanDeletePizza)
+            if (Model.IsAdmin)
             {
                 <input type="hidden" asp-for="Pizza.PizzaId" />
-                <input type="submit" value="Delete" class="btn btn-danger"/>
+                <input asp-page-handler="Delete" type="submit" value="Delete" class="btn btn-danger"/>
+                <input type="hidden" asp-for="ChangeSpecial" value="@Model.Pizza.IsSpecialOffer" />
+                string value;
+                if (Model.Pizza.IsSpecialOffer)
+                {
+                    <p>Remove from specials</p>
+                    value = "Remove";
+                }
+                else
+                {
+                    <p>Add to specials</p>
+                    value = "Add";
+                }
+
+                <input asp-page-handler="ChangeSpecial" type="submit" value="@value" class="btn-secondary"/>
             }
         }
         <a asp-page="./Menu">Back to List</a>

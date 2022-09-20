@@ -15,16 +15,11 @@
     <link rel="stylesheet" href="~/Menu.cshtml.css" asp-append-version="true" />
 </head>
 <body>
-    <nav style=" background-color:maroon;" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark box-shadow ">
+    <nav style=" background-color:maroon; height:5%;" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark box-shadow ">
         <div class="container">
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-area="" asp-page="/Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" asp-page="/Menu">Menu</a>
-                    </li>
+                   
                     @{
                         if (SignInManager.Context.User.HasClaim("Admin", "true"))
                         {
@@ -64,26 +59,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-page="/Menu">Menu</a>
                         </li>
-                        @{
-                            if(SignInManager.Context.User.HasClaim("Admin", "true"))
-                            {
-                                            <li class="nav-item">
-                                                <a class="nav-link text-light" asp-page="/CreatePizza">Create Pizza</a>
-                                            </li>
-                            }
-                        }
                     </ul>
-                    @{
-                        if(SignInManager.Context.User.HasClaim("Admin", "true"))
-                        {
-                                        <ul class="navbar-nav flex-grow-1">
-                                            <li class="nav-item">
-                                                <a class="nav-link text-light" asp-page="/ManageAdmins">Manage Admins</a>
-                                            </li>
-                                        </ul>
-                        }
-                    }
-                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>

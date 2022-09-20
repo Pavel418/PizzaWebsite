@@ -19,7 +19,7 @@
                     <span id="emailspan" asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
                 <div class="form-floating mb-3">
-                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Password" />
+                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" id="passwordinput" aria-required="true" placeholder="Password" />
                     <label asp-for="Input.Password" class="form-label"></label>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
@@ -55,25 +55,25 @@
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
-                    </div>
+                        <div>
+                            <p>
+                                There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
+                                about setting up this ASP.NET application to support logging in via external services</a>.
+                            </p>
+                        </div>
                 }
                 else
                 {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins)
+                        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                            <div>
+                                <p>
+                                    @foreach (var provider in Model.ExternalLogins)
                                 {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                        <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
                                 }
-                            </p>
-                        </div>
-                    </form>
+                                </p>
+                            </div>
+                        </form>
                 }
             }
         </section>
@@ -85,15 +85,41 @@
     window.setInterval(function(){
     let obj1 = document.getElementById("emailinput-error");
     let obj2 = document.getElementById("emailinput");
-        console.log(obj1);
+    let obj3 = document.getElementById("passwordinput");
+    let obj4 = document.getElementById("passwordinput-error");
+
+    
+        
         if(obj1 != null){
             obj2.classList.add("is-invalid");
+            //obj3.classList.add("is-invalid");
         }
         else{
             obj2.classList.remove("is-invalid");
+            //obj3.classList.remove("is-invalid");
         }
     }, 100);
-    
+
+    if (obj4 != null) {
+        obj3.classList.add("is-invalid");
+    }
+    else {
+        obj3.classList.remove("is-invalid");
+    }
+        }, 100);
+    /*
+        if(obj4 != null){
+                obj3.classList.add("is-invalid");
+            }
+            else{
+                obj3.classList.remove("is-invalid");
+            }
+        }, 100);
+
+
+
+*/
+
 </script>
 
 @section Scripts {

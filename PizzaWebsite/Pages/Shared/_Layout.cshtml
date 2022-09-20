@@ -53,13 +53,21 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                        <li class="nav-item mx-3">
                             <a class="nav-link text-light" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item mx-3">
+                            <a class="nav-link text-light" asp-page="/Menu">Offers</a>
+                        </li>
+                        <li class="nav-item mx-3">
                             <a class="nav-link text-light" asp-page="/Menu">Menu</a>
                         </li>
+                        
                     </ul>
+                    <form action="" class="d-flex">
+                        <input type="Search" class="form-control mx-2" placeholder="Search" />
+                        <button class="btn btn-outline-warning ml-2">Search</button>
+                    </form>
                 </div>
             </div>
         </nav>
@@ -83,3 +91,4 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+

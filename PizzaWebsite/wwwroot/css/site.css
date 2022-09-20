@@ -26,11 +26,37 @@ header {
 
     
 }
-.nav-item:hover{
+/*
+n:hover{
     color:red !important;
 }
+.nav-link:hover {
+    color: red !important;
+}
+.nav-link {
+    color: #dc3545;
+}
+.nav-link:active {
+    color: #f3f3f7;
+    background-color:red;
+}
+*/
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #dc3545;
+}
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #dc3545;
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+    .nav-link:hover {
+        color: #ad2122;
+    }
 a:hover {
-    
     color: #ad2122
 }
 

@@ -102,3 +102,6 @@ h6{
 .list-group-item-danger:active{
     background-color:	#df4759
 }
+.form-control{
+    border-radius:18px;
+}

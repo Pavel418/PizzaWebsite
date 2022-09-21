@@ -4,19 +4,42 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="modal fade productinfo"tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col-md-6 d-flex">
+                    <img class="w-100" src="/img/istockphoto-1192094401-612x612.jpg" />
+                </div>
+                <div class="col-md-6  d-flex"  style="height:90vh; overflow-y: scroll; overflow-x: hidden">
+                    J[tyyfz gbwwf gjregfqnt]
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade productinfo"tabindex="-1" aria-labelledby="myLArgeMO" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Хуйня</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
             </div>
+
             <div class="modal-body">
-                Надо переделать на джаваскрипт
+                <div class="row">
+                    <div class="col-md-6 d-flex">
+                        <img src="/img/istockphoto-1192094401-612x612.jpg" />
+                    </div>
+                    <div class="col-md-6 d-flex">
+                         J[tyyfz gbwwf gjregfqnt]
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Поссать</button>
-                <button type="button" class="btn btn-outline-danger">Покакать</button>
+                <button type="button" class="btn btn-outline-danger">Add to cart</button>
             </div>
         </div>
     </div>
@@ -79,7 +102,7 @@
                                 <p class="card-text">@pizza.Ingredients</p>
                                 <div class="row mt-5 mb-2">
                                     <div class="col-md-6">
-                                        <a asp-page="/ViewPizza" asp-route-id="@pizza.PizzaId" class="btn rbtn  btn-outline-danger btn-lg" data-bs-toggle="modal" data-bs-target=".productinfo">Choose</a>
+                                    <a asp-page="/ViewPizza" asp-route-id="@pizza.PizzaId" class="btn rbtn  btn-outline-danger btn-lg" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">Choose</a>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="price my-4"><h6>@pizza.Price $</h6></div>

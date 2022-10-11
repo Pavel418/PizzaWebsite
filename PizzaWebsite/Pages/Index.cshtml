@@ -4,12 +4,75 @@
     ViewData["Title"] = "Home page";
 }
 
+<div class="modal fade order-choose-modal " id="exampleModal" tabindex="-1"
+     role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <!-- Modal heading -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                   
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+            <!-- Modal body with image -->
+            <div class="modal-body">
+                <div class="modal-figure">
+                    <img src="~/img/Pizza.png "/>
+                </div>
+                <div class="modal-ai-content  px-3">
+                    <h3>sadasddsa</h3>
+                    <article>
+                        <p>descr</p>
+                    </article>
+                    <div class="d-flex align-content-center">
+                        <input class="mx-2 d-flex" type="number">
+                        <h4 class="mx-2">[Price]</h4>
+                        <button class="mx-2 btn btn-outline-danger">Order</button>
+                    </div>
+                    <hr>
+                    <div class="d-flex  align-content-center">
+                        <button class="mx-1 btn btn-outline-danger p-4">Small</button>
+                        <button class="mx-1 btn btn-outline-danger p-4">Medium</button>
+                        <button class="mx-1 btn btn-outline-danger p-4">Big</button>
+                    </div>
+                    <hr>
+                    <div class="d-flex  ">
+                        <button class="mx-1 btn btn-outline-danger p-4">4 Slices</button>
+                        <button class="mx-1 btn btn-outline-danger p-4">8 Slices</button>
+                    </div>
+                    <hr>
+                    <div class="d-flex  ">
+                        <button class="mx-1 btn btn-outline-danger p-4">Triangles</button>
+                        <button class="mx-1 btn btn-outline-danger p-4">Cubes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="row">
-                <div class="col-md-6 d-flex">
-                    <img class="w-100" src="/img/istockphoto-1192094401-612x612.jpg" />
+            <div class="modal-header">
+                <h2>Pizza Name</h2>
+                <p>ingrewesdifjkjdksjfksdkjfsksfkdlj</p>
+                <div class="order-sett">
+                    <h3>Price</h3>
+                    <button type="button" class="btn rbtn  btn-outline-danger"></button>
+                </div>
+            </div>
+            <div class="modal-figure">
+                <img class="w-100" src="/img/istockphoto-1192094401-612x612.jpg" />
+            </div>
+            <div class="modal-body">
+                <div></div>
+                <div class="modal-ai-content">
+                    
+
                 </div>
                 <div class="col-md-6  d-flex"  style="height:90vh; overflow-y: scroll; overflow-x: hidden">
                     J[tyyfz gbwwf gjregfqnt]
@@ -44,7 +107,7 @@
         </div>
     </div>
 </div>
-
+-->
 <main id="bgc">
     <div class="carousel slide mb-5 " id="carouselControls" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -87,30 +150,24 @@
     </div>
 </main>
 
-
 <div class="container  my-5 text-center">
     <h2 class="my-5">Special offers</h2>
     <div class="row  gy-5 ">
         @{
             foreach (var pizza in Model.SpecialPizzas)
             {
-                    <div class="col-md-3 col-sm-12 text-center " style="display:flex; justify-content: center;">
-                        <div class="card scale shadow-sm " style="width: 18rem;">
-                            <img src="~/img/pizza-images/@pizza.ImageLocation" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">@pizza.Name</h5>
-                                <p class="card-text">@pizza.Ingredients</p>
-                                <div class="row mt-5 mb-2">
-                                    <div class="col-md-6">
-                                    <a asp-page="/ViewPizza" asp-route-id="@pizza.PizzaId" class="btn rbtn  btn-outline-danger btn-lg" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">Choose</a>
-                                    </div>
-                                    <div class="col-md-6">
+                        <div class="col-md-3 col-sm-12 text-center " style="display:flex; justify-content: center;">
+                        <a asp-page="/ViewPizza" asp-route-id="@pizza.PizzaId" data-bs-toggle="modal" data-bs-target=".order-choose-modal">
+                                <div class="card scale shadow-sm " style="width: 18rem;">
+                                    <img src="~/img/pizza-images/@pizza.ImageLocation" class="card-img-top" alt="...">
+                                    <div class="card-body offer-card-body">
+                                        <h5 class="card-title">@pizza.Name</h5>
+                                        <p class="card-text">@pizza.Ingredients</p>
                                         <div class="price my-4"><h6>@pizza.Price $</h6></div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
-                    </div>
             }
         }
     <div class="my-5">

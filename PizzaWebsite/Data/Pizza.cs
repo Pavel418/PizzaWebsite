@@ -13,5 +13,7 @@ namespace PizzaWebsite.Data
         public string ImageLocation { get; set; }
 
         public bool IsSpecialOffer { get; set; }
+
+        public string BackGroundImageLocation { get; set; }
     }
 }

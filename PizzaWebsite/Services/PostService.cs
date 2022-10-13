@@ -2,6 +2,8 @@
 using PizzaWebsite.Data;
 using PizzaWebsite.Pages;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace PizzaWebsite.Services
 {
@@ -47,36 +49,18 @@ namespace PizzaWebsite.Services
 
         public async Task<int> AddPizzaAsync(CreatePizzaCommand command)
         {
-            string wwwRootPath = _environment.WebRootPath;
-            string fileName = Path.GetRandomFileName();
-            string fileExtension = Path.GetExtension(command.Image.FileName);
+            string localFrontImage = await SaveImage(command.Image);
 
-            string[] imageExtensions = { ".jpeg", ".png", ".jpg", ".bmp", ".jfif" };
+            string localBackground = await SaveImage(command.BackgroundImage);
 
-            bool isValid = false;
-            foreach (string extension in imageExtensions)
-            {
-                if (extension == fileExtension)
-                    isValid = true;
-            }
-
-            if (!isValid)
-            {
-                throw new InvalidOperationException("This file format is not supported.");
-            }
-
-            string path = Path.Combine(wwwRootPath, @"img\pizza-images", fileName + fileExtension);
-
-            using (var fileStream = new FileStream(path, FileMode.Create))
-            {
-                await command.Image.CopyToAsync(fileStream);
-            }
             Pizza pizza = new()
             {
                 Name = command.Name,
                 Price = command.Price,
                 Ingredients = command.Ingredients,
-                ImageLocation = fileName + fileExtension
+                ImageLocation = localFrontImage,
+                BackGroundImageLocation = localBackground,
+                IsSpecialOffer = command.IsSpecial
             };
 
             _context.Add(pizza);
@@ -98,12 +82,8 @@ namespace PizzaWebsite.Services
                 _context.Pizzas.Remove(pizza);
                 await _context.SaveChangesAsync();
 
-                string wwwRootPath = _environment.WebRootPath;
-                string path = Path.Combine(wwwRootPath, @"img\pizza-images", pizza.ImageLocation);
-                if (File.Exists(path))
-                {
-                    File.Delete(path);
-                }
+                DeleteImage(pizza.ImageLocation);
+                DeleteImage(pizza.BackGroundImageLocation);
             }
         }
 
@@ -119,6 +99,46 @@ namespace PizzaWebsite.Services
             {
                 pizza.IsSpecialOffer = isSpecial;
                 await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task<string> SaveImage(IFormFile file)
+        {
+            string fileName = Path.GetRandomFileName();
+            string fileExtension = Path.GetExtension(file.FileName);
+
+            string[] imageExtensions = { ".jpeg", ".png", ".jpg", ".bmp", ".jfif" };
+
+            bool isValid = false;
+            foreach (string extension in imageExtensions)
+            {
+                if (extension == fileExtension)
+                    isValid = true;
+            }
+
+            if (!isValid)
+            {
+                throw new InvalidOperationException("This file format is not supported.");
+            }
+
+            string fullName = fileName + fileExtension;
+
+            string path = Path.Combine(_environment.WebRootPath, @"img\pizza-images", fullName);
+
+            using (var fileStream = new FileStream(path, FileMode.Create))
+            {
+                await file.CopyToAsync(fileStream);
+            }
+
+            return fullName;
+        }
+
+        public void DeleteImage(string fileName)
+        {
+            string path = Path.Combine(_environment.WebRootPath, @"img\pizza-images", fileName);
+            if (File.Exists(path))
+            {
+                File.Delete(path);
             }
         }
     }

@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Build.Framework;
 using PizzaWebsite.Services;
 using System.ComponentModel.DataAnnotations;
+using RequiredAttribute = System.ComponentModel.DataAnnotations.RequiredAttribute;
 
 namespace PizzaWebsite.Pages
 {
@@ -62,5 +64,11 @@ namespace PizzaWebsite.Pages
 
         [Required]
         public IFormFile Image { get; set; }
+
+        [Required]
+        public IFormFile BackgroundImage { get; set; }
+
+        [Required]
+        public bool IsSpecial { get; set; }
     }
 }

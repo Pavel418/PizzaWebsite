@@ -17,15 +17,11 @@ namespace PizzaWebsite.Pages
         [BindProperty]
         public bool ChangeSpecial { get; set; }
 
-        private readonly ApplicationDbContext _context;
-        private readonly IWebHostEnvironment _environment;
         private readonly PostService _postService; 
         private readonly IAuthorizationService _authService;
 
-        public ViewPizzaModel(ApplicationDbContext context, IWebHostEnvironment environment, PostService postService, IAuthorizationService authorization)
+        public ViewPizzaModel(PostService postService, IAuthorizationService authorization)
         {
-            _context = context;
-            _environment = environment;
             _postService = postService;
             _authService = authorization;
         }

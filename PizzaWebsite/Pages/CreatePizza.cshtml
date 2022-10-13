@@ -40,6 +40,20 @@
             <input asp-for="Input.Image" type="file">
             <span asp-validation-for="Input.Image"></span>
         </dd>
+        <dt>
+            <label asp-for="Input.BackgroundImage"></label>
+        </dt>
+        <dd>
+            <input asp-for="Input.BackgroundImage" type="file">
+            <span asp-validation-for="Input.BackgroundImage"></span>
+        </dd>
+        <dt>
+            <label asp-for="Input.IsSpecial"></label>
+        </dt>
+        <dd>
+            <input asp-for="Input.IsSpecial" type="checkbox">
+            <span asp-validation-for="Input.IsSpecial"></span>
+        </dd>
     </dl>
     <div asp-validation-summary="ModelOnly">
         <span>Please correct the following errors</span>

@@ -4,58 +4,24 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="modal fade order-choose-modal " id="exampleModal" tabindex="-1"
-     role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
+<!--
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
-                   
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                <h2>Pizza Name</h2>
+                <p>ingrewesdifjkjdksjfksdkjfsksfkdlj</p>
+                <div class="order-sett">
+                    <h3>Price</h3>
+                    <button type="button" class="btn rbtn  btn-outline-danger"></button>
+                </div>
             </div>
-           
+            <div class="modal-figure">
+                <img class="w-100" src="/img/istockphoto-1192094401-612x612.jpg" />
+            </div>
             <div class="modal-body">
-                <div class="modal-figure">
-                    <img src="~/img/Pitstsa-Margarita.png"/>
-                </div>
-                <div class="modal-ai-content  px-3">
-                    <h3 class="my-2">Mozzarella</h3>
-                    <article>
-                        <p>Juicy tomatoes, basil, and mozzarella cheese top a crisp, chewy crust.</p>
-                    </article>
-                    <div class="d-flex align-content-center">
-                        <div class="number-input">
-                            <button id="decrement-btn">-</button>
-                            <label class="input-value"></label>
-                            <button id="increment-btn">+</button>
-                        </div>
-                        <h4 class="mx-2">[Price]</h4>
-                        <button class="mx-2 btn btn-outline-danger">Order</button>
-                    </div>
-                    <hr>
-                    <div class="d-flex flex-wrap align-content-center">
-                        <button class="mx-1 btn btn-outline-danger p-4">Small</button>
-                        <button class="mx-1 btn btn-outline-danger p-4">Medium</button>
-                        <button class="mx-1 btn btn-outline-danger p-4">Big</button>
-                    </div>
-                    <hr>
-                    <div class="d-flex  ">
-                        <button class="mx-1 btn btn-outline-danger p-4">4 Slices</button>
-                        <button class="mx-1 btn btn-outline-danger p-4">8 Slices</button>
-                    </div>
-                    <hr>
-                    <div class="d-flex  ">
-                        <button class="mx-1 btn btn-outline-danger p-4">Triangles</button>
-                        <button class="mx-1 btn btn-outline-danger p-4">Cubes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                <div></div>
+                <div class="modal-ai-content">
 
 
 <main id="bgc">
@@ -95,7 +61,7 @@
         </a>
 
         <a class="carousel-control-next" role="button" href="#carouselControls" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>                                      
+            <span class="carousel-control-next-icon"></span>
         </a>
     </div>
 </main>
@@ -106,18 +72,66 @@
         @{
             foreach (var pizza in Model.SpecialPizzas)
             {
-                        <div class="col-md-3 col-sm-12 text-center " style="display:flex; justify-content: center;">
-                        <a asp-page="/ViewPizza" asp-route-id="@pizza.PizzaId" data-bs-toggle="modal" data-bs-target=".order-choose-modal">
-                                <div class="card scale shadow-sm " style="width: 18rem;">
-                                    <img src="~/img/pizza-images/@pizza.ImageLocation" class="card-img-top" alt="...">
-                                    <div class="card-body offer-card-body">
-                                        <h5 class="card-title">@pizza.Name</h5>
-                                        <p class="card-text">@pizza.Ingredients</p>
-                                        <div class="price my-4"><h6>@pizza.Price $</h6></div>
+                <div class="modal fade order-choose-modal" tabindex="-1" id="modalTable-@pizza.PizzaId"
+                 role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                            <!-- Modal heading -->
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <!-- Modal body with image -->
+                            <div class="modal-body">
+                                <div class="modal-figure">
+                                    <img src="~/img/pizza-images/@pizza.BackGroundImageLocation" />
+                                </div>
+                                <div class="modal-ai-content  px-3">
+                                    <h3>@pizza.Name</h3>
+                                    <article>
+                                        <p>@pizza.Ingredients</p>
+                                    </article>
+                                    <div class="d-flex align-content-center">
+                                        <input class="mx-2 d-flex" type="number">
+                                        <h4 class="mx-2">@pizza.Price</h4>
+                                        <button class="mx-2 btn btn-outline-danger">Order</button>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex  align-content-center">
+                                        <button class="mx-1 btn btn-outline-danger p-4">Small</button>
+                                        <button class="mx-1 btn btn-outline-danger p-4">Medium</button>
+                                        <button class="mx-1 btn btn-outline-danger p-4">Big</button>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex  ">
+                                        <button class="mx-1 btn btn-outline-danger p-4">4 Slices</button>
+                                        <button class="mx-1 btn btn-outline-danger p-4">8 Slices</button>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex  ">
+                                        <button class="mx-1 btn btn-outline-danger p-4">Triangles</button>
+                                        <button class="mx-1 btn btn-outline-danger p-4">Cubes</button>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-12 text-center " style="display:flex; justify-content: center;">
+                    <a asp-page="/ViewPizza" asp-route-id="@pizza.PizzaId" data-bs-toggle="modal" data-bs-target="#modalTable-@pizza.PizzaId">
+                    <div class="card scale shadow-sm " style="width: 18rem;">
+                        <img src="~/img/pizza-images/@pizza.ImageLocation" class="card-img-top" alt="...">
+                        <div class="card-body offer-card-body">
+                            <h5 class="card-title">@pizza.Name</h5>
+                            <p class="card-text">@pizza.Ingredients</p>
+                            <div class="price my-4"><h6>@pizza.Price $</h6></div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
             }
         }
     <div class="my-5">
@@ -193,4 +207,3 @@
         </div>
     </div>
 </div >
-

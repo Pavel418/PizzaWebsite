@@ -41,7 +41,7 @@ namespace PizzaWebsite.Services
             var pizza = await _context.Pizzas.FindAsync(id);
             if (pizza == null)
             {
-                throw new ArgumentNullException();
+                throw new FileNotFoundException("Pizza is null");
             }
 
             return pizza;
@@ -49,17 +49,17 @@ namespace PizzaWebsite.Services
 
         public async Task<int> AddPizzaAsync(CreatePizzaCommand command)
         {
-            string localFrontImage = await SaveImage(command.Image);
+            string frontImage = await SaveImage(command.FrontImage);
 
-            string localBackground = await SaveImage(command.BackgroundImage);
+            string background = await SaveImage(command.BackgroundImage);
 
             Pizza pizza = new()
             {
                 Name = command.Name,
                 Price = command.Price,
                 Ingredients = command.Ingredients,
-                ImageLocation = localFrontImage,
-                BackGroundImageLocation = localBackground,
+                ImageLocation = frontImage,
+                BackGroundImageLocation = background,
                 IsSpecialOffer = command.IsSpecial
             };
 
@@ -102,7 +102,7 @@ namespace PizzaWebsite.Services
             }
         }
 
-        public async Task<string> SaveImage(IFormFile file)
+        private async Task<string> SaveImage(IFormFile file)
         {
             string fileName = Path.GetRandomFileName();
             string fileExtension = Path.GetExtension(file.FileName);
@@ -133,7 +133,7 @@ namespace PizzaWebsite.Services
             return fullName;
         }
 
-        public void DeleteImage(string fileName)
+        private void DeleteImage(string fileName)
         {
             string path = Path.Combine(_environment.WebRootPath, @"img\pizza-images", fileName);
             if (File.Exists(path))

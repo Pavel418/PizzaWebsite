@@ -39,6 +39,7 @@ builder.Services.AddScoped<PostService>()
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("Admin", policyBuilder => policyBuilder.RequireClaim("Admin"));
+    options.AddPolicy("HeadAdmin", policyBuilder => policyBuilder.RequireClaim("HeadAdmin"));
 });
 
 var app = builder.Build();

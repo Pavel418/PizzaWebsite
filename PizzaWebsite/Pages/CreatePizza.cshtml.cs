@@ -63,7 +63,7 @@ namespace PizzaWebsite.Pages
         public string? Ingredients { get; set; }
 
         [Required]
-        public IFormFile Image { get; set; }
+        public IFormFile FrontImage { get; set; }
 
         [Required]
         public IFormFile BackgroundImage { get; set; }

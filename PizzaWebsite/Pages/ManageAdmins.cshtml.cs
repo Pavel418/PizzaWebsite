@@ -5,11 +5,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using PizzaWebsite.Data;
 using PizzaWebsite.Services;
+using System.Linq;
 using System.Security.Claims;
 
 namespace PizzaWebsite.Pages
 {
-    [Authorize("Admin")]
+    [Authorize("HeadAdmin")]
     public class ManageAdminsModel : PageModel
     {
         public List<ApplicationUser> Admins { get; set; } = new();
@@ -25,9 +26,18 @@ namespace PizzaWebsite.Pages
         public async Task<IActionResult> OnGet()
         {
             var admins = await _userManager.GetUsersForClaimAsync(new Claim("Admin", "true"));
-            Admins = admins.ToList();
+
+            Admins = await admins.ToAsyncEnumerable().WhereAwait(async (x) =>
+            {
+                var claims = await _userManager.GetClaimsAsync(x);
+                return !claims.Any(z =>
+                {
+                    return z.Type == "HeadAdmin" && z.Value == "true";
+                });
+            }).ToListAsync();
 
             NotAdmins = await _userManager.Users.Where(x => !admins.Contains(x)).ToListAsync();
+
             return Page();
         }
 

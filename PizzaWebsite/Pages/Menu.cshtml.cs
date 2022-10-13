@@ -8,9 +8,8 @@ namespace PizzaWebsite.Pages
     public class MenuModel : PageModel
     {
         public ICollection<Pizza> Pizzas { get; set; }
-        public FileInfo[] ImageSources { get; set; }
 
-        PostService _service;
+        private readonly PostService _service;
 
         public MenuModel(PostService service)
         {

@@ -147,3 +147,34 @@ const screenWidth = window.screen.width;
 })();
 */
 
+let dec_btn = document.querySelector('.decrement-btn');
+let inc_btn = document.querySelector('.increment-btn');
+let label = document.querySelector('.input-value');
+
+let value = 1;
+
+
+
+
+dec_btn.addEventListener("click", function dec() {
+    decCheck();
+    label.innerHTML = value;
+    console.log(value);
+}
+);
+inc_btn.addEventListener("click", function inc() {
+    value++;
+    label.innerHTML = value;
+    console.log(value);
+});
+
+function decCheck(){
+    if (value <= 0) {
+        value = 0;
+        dec_btn.classList.add('isInactive')
+    }
+    else {
+        dec_btn.classList.remove('isInactive')
+        value--;
+    }
+}

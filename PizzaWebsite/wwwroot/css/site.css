@@ -137,34 +137,63 @@ h6{
 .order-choose-modal{
     
 }
-#decrement-btn {
+.decrement-btn {
     border: solid darkred 1px;
-    background: red;
+    background: #dc3545;
     border-radius: 5px 0 0 5px;
     border: none;
     height: 30px;
     width: 30px;
     color: white;
+    box-shadow: rgb(0,0,0,0.4) 0em 0.2em 0.4em;
+
 }
-#increment-btn {
-    color:white;
-    border: solid darkred 1px;
-    background: red;
+.increment-btn {
+    color: white;
+    background: #dc3545;
     border-radius: 0 5px 5px 0;
     border: none;
     height: 30px;
     width: 30px;
+    box-shadow: rgb(0,0,0,0.4) 0em 0.2em 0.4em;
 }
 .number-input {
     display: flex;
 }
-#increment-btn:hover, #decrement-btn:hover{
-    background:darkred;
-
+.increment-btn:hover, .decrement-btn:hover {
+    background: darkred;
+    box-shadow: rgb(0,0,0,0.5) 0em 0.5em 0.6em;
+    transition: all ease 0.2s;
 }
 .input-value {
-    
-    border: solid darkred 1px;
+    min-width: 30px;
+    border-top: solid gray 1px;
+    border-bottom: solid gray 1px;
     height: 30px;
     width: 30px;
+    background-color: white;
+    box-shadow: rgb(0,0,0,0.4) 0em 0.2em 0.4em;
+}
+.module-price{
+    align-self:center;
+    color:maroon;
+}
+.modal-input{
+    align-self:center;
+    background-color:transparent;
+   
+}
+.pizza-order-btn {
+    max-height: 40px;
+    align-self: center;
+}
+.isInactive {
+    background-color: lightgray;
+    box-shadow: none;
+}
+
+.isInactive:hover {
+    background: gray;
+    box-shadow: none;
+    transition: all ease 0s;
 }

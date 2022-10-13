@@ -147,34 +147,26 @@ const screenWidth = window.screen.width;
 })();
 */
 
-let dec_btn = document.querySelector('.decrement-btn');
-let inc_btn = document.querySelector('.increment-btn');
-let label = document.querySelector('.input-value');
-
-let value = 1;
+let dec_btn = document.querySelectorAll('.decrement-btn');
+let inc_btn = document.querySelectorAll('.increment-btn');
 
 
+dec_btn.forEach(element => element.addEventListener("click", function dec() {
+    var id = element.id.split('-')[2];
+    var label = document.querySelector('#button-value-' + id);
 
-
-dec_btn.addEventListener("click", function dec() {
-    decCheck();
-    label.innerHTML = value;
-    console.log(value);
-}
-);
-inc_btn.addEventListener("click", function inc() {
-    value++;
-    label.innerHTML = value;
-    console.log(value);
-});
-
-function decCheck(){
-    if (value <= 0) {
-        value = 0;
-        dec_btn.classList.add('isInactive')
+    if (label.innerHTML <= 0) {
+        label.innerHTML = 0;
+        element.classList.add('isInactive')
     }
     else {
-        dec_btn.classList.remove('isInactive')
-        value--;
+        element.classList.remove('isInactive')
+        label.innerHTML--;
     }
 }
+));
+inc_btn.forEach(element => element.addEventListener("click", function inc() {
+    var id = element.id.split('-')[2];
+    var label = document.querySelector('#button-value-' + id);
+    label.innerHTML++;
+}));

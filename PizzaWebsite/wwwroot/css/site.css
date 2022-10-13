@@ -137,3 +137,34 @@ h6{
 .order-choose-modal{
     
 }
+#decrement-btn {
+    border: solid darkred 1px;
+    background: red;
+    border-radius: 5px 0 0 5px;
+    border: none;
+    height: 30px;
+    width: 30px;
+    color: white;
+}
+#increment-btn {
+    color:white;
+    border: solid darkred 1px;
+    background: red;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    height: 30px;
+    width: 30px;
+}
+.number-input {
+    display: flex;
+}
+#increment-btn:hover, #decrement-btn:hover{
+    background:darkred;
+
+}
+.input-value {
+    
+    border: solid darkred 1px;
+    height: 30px;
+    width: 30px;
+}

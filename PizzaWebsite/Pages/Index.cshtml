@@ -7,32 +7,36 @@
 <div class="modal fade order-choose-modal " id="exampleModal" tabindex="-1"
      role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
         <div class="modal-content">
-            <!-- Modal heading -->
+            
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
                    
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
             </div>
-            <!-- Modal body with image -->
+           
             <div class="modal-body">
                 <div class="modal-figure">
-                    <img src="~/img/Pizza.png "/>
+                    <img src="~/img/Pitstsa-Margarita.png"/>
                 </div>
                 <div class="modal-ai-content  px-3">
-                    <h3>sadasddsa</h3>
+                    <h3 class="my-2">Mozzarella</h3>
                     <article>
-                        <p>descr</p>
+                        <p>Juicy tomatoes, basil, and mozzarella cheese top a crisp, chewy crust.</p>
                     </article>
                     <div class="d-flex align-content-center">
-                        <input class="mx-2 d-flex" type="number">
+                        <div class="number-input">
+                            <button id="decrement-btn">-</button>
+                            <label class="input-value"></label>
+                            <button id="increment-btn">+</button>
+                        </div>
                         <h4 class="mx-2">[Price]</h4>
                         <button class="mx-2 btn btn-outline-danger">Order</button>
                     </div>
                     <hr>
-                    <div class="d-flex  align-content-center">
+                    <div class="d-flex flex-wrap align-content-center">
                         <button class="mx-1 btn btn-outline-danger p-4">Small</button>
                         <button class="mx-1 btn btn-outline-danger p-4">Medium</button>
                         <button class="mx-1 btn btn-outline-danger p-4">Big</button>
@@ -53,61 +57,7 @@
     </div>
 </div>
 
-<!--
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Pizza Name</h2>
-                <p>ingrewesdifjkjdksjfksdkjfsksfkdlj</p>
-                <div class="order-sett">
-                    <h3>Price</h3>
-                    <button type="button" class="btn rbtn  btn-outline-danger"></button>
-                </div>
-            </div>
-            <div class="modal-figure">
-                <img class="w-100" src="/img/istockphoto-1192094401-612x612.jpg" />
-            </div>
-            <div class="modal-body">
-                <div></div>
-                <div class="modal-ai-content">
-                    
 
-                </div>
-                <div class="col-md-6  d-flex"  style="height:90vh; overflow-y: scroll; overflow-x: hidden">
-                    J[tyyfz gbwwf gjregfqnt]
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade productinfo"tabindex="-1" aria-labelledby="myLArgeMO" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Хуйня</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-            </div>
-
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-6 d-flex">
-                        <img src="/img/istockphoto-1192094401-612x612.jpg" />
-                    </div>
-                    <div class="col-md-6 d-flex">
-                         J[tyyfz gbwwf gjregfqnt]
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Поссать</button>
-                <button type="button" class="btn btn-outline-danger">Add to cart</button>
-            </div>
-        </div>
-    </div>
-</div>
--->
 <main id="bgc">
     <div class="carousel slide mb-5 " id="carouselControls" data-bs-ride="carousel">
         <div class="carousel-inner">

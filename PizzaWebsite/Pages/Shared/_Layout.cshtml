@@ -30,7 +30,7 @@
                     }
                 </ul>
                 @{
-                    if (SignInManager.Context.User.HasClaim("Admin", "true"))
+                    if (SignInManager.Context.User.HasClaim("HeadAdmin", "true"))
                     {
                             <ul class="navbar-nav flex-grow-1">
                                 <li class="nav-item">

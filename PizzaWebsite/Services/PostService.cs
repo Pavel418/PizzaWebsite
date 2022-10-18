@@ -18,9 +18,9 @@ namespace PizzaWebsite.Services
             _environment = environment;
         }
 
-        public async Task<ICollection<Pizza>> GetPizzasAsync()
+        public async Task<ICollection<Pizza>> GetPizzas(SortMethod method = SortMethod.Random)
         {
-            return await _context.Pizzas
+            var pizzas = _context.Pizzas
                 .Select(x => new Pizza
                 {
                     Name = x.Name,
@@ -28,8 +28,27 @@ namespace PizzaWebsite.Services
                     Ingredients = x.Ingredients,
                     Price = x.Price,
                     ImageLocation = x.ImageLocation
-                })
-                .ToListAsync();
+                });
+
+            var sortedPizzas = method switch
+            {
+                SortMethod.Random => pizzas.OrderBy(x => x.PizzaId),
+                SortMethod.Price => pizzas.OrderBy(x => x.Price),
+                SortMethod.Alphabet => pizzas.OrderBy(x => x.Name),
+            };
+
+            return await sortedPizzas.ToListAsync();
+        }
+
+        public async Task<ICollection<Pizza>> GetChunkOfPizzas(int pizzasPerPage, int index, SortMethod method = SortMethod.Random)
+        {
+            var allPizzas = await GetPizzas(method);
+            var chunk = allPizzas.Chunk(pizzasPerPage).ToList();
+            index--;
+            if (chunk.Count <= index)
+                throw new ArgumentOutOfRangeException(nameof(index), "out of range");
+
+            return chunk.ElementAt(index);
         }
 
         public async Task<Pizza> GetPizzaByID(int? id)
@@ -67,6 +86,29 @@ namespace PizzaWebsite.Services
             await _context.SaveChangesAsync();
 
             return pizza.PizzaId;
+        }
+
+        public async Task<List<int>> AddTestPizzas(int count)
+        {
+            List<int> ids = new();
+            for (int i = 0; i < count; i++)
+            {
+                Pizza pizza = new()
+                {
+                    Name = "Test",
+                    Price = 10,
+                    Ingredients = "Test",
+                    ImageLocation = "",
+                    BackGroundImageLocation = "",
+                    IsSpecialOffer = false
+                };
+
+                _context.Add(pizza);
+                ids.Add(pizza.PizzaId);
+            }
+            await _context.SaveChangesAsync();
+
+            return ids;
         }
 
         public async Task DeletePizza(int? id)

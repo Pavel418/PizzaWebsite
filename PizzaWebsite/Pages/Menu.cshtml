@@ -1,4 +1,4 @@
-﻿@page 
+﻿@page "{pageIndex=1}/{pizzasPerPage=12}/{SortingChoice=Random}"
 @model PizzaWebsite.Pages.MenuModel
 @{
     ViewData["Title"] = "Menu";
@@ -6,6 +6,16 @@
 
 <h1 class="mt-5">Our Menu</h1>
 <div class="container">
+    <form method="post">
+        <select asp-for="SortingChoice" asp-items="Html.GetEnumSelectList<SortMethod>()"></select>
+        <input class="btn btn-outline-danger" type="submit" value="Sort" />
+    </form>
+    <form method="post">
+        <input class="btn-dark" asp-page-handler="Fill" type="submit" value="Fill with test pizzas"/>
+    </form>
+    <form method="post">
+        <input class="btn-danger" asp-page-handler="DeleteTests" type="submit" value="Delete test pizzas" />
+    </form>
     <div class="row my-5">
         @{
             foreach (var pizza in Model.Pizzas)

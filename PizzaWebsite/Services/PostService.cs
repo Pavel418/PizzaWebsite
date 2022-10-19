@@ -90,13 +90,14 @@ namespace PizzaWebsite.Services
 
         public async Task<List<int>> AddTestPizzas(int count)
         {
+            Random random = new();
             List<int> ids = new();
             for (int i = 0; i < count; i++)
             {
                 Pizza pizza = new()
                 {
                     Name = "Test",
-                    Price = 10,
+                    Price = random.Next(1, 100),
                     Ingredients = "Test",
                     ImageLocation = "",
                     BackGroundImageLocation = "",

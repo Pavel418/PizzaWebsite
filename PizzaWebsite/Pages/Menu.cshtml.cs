@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PizzaWebsite.Data;
 using PizzaWebsite.Services;
+using System.Security.Policy;
 
 namespace PizzaWebsite.Pages
 {
@@ -27,11 +29,11 @@ namespace PizzaWebsite.Pages
             _service = service;
         }
 
-        public async Task<IActionResult> OnGetAsync(string sortingChoice, int pageIndex, int pizzasPerPage)
+        public async Task<IActionResult> OnGetAsync(SortMethod sortingChoice = SortMethod.Random, int pageIndex = 1, int pizzasPerPage = 12)
         {
             try
             {
-                Pizzas = await _service.GetChunkOfPizzas(pizzasPerPage, pageIndex, Enum.Parse<SortMethod>(sortingChoice));
+                Pizzas = await _service.GetChunkOfPizzas(pizzasPerPage, pageIndex, sortingChoice);
             }
             catch
             {
@@ -41,9 +43,16 @@ namespace PizzaWebsite.Pages
             return Page();
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPost(string sortingChoice = "Random", string pageIndex = "1", string pizzasPerPage = "12")
         {
-            return RedirectToPage(routeValues: new { SortingChoice });
+            var qb = new QueryBuilder
+            {
+                { "pizzasPerPage", pizzasPerPage },
+                { "pageIndex", pageIndex },
+                { "sortingChoice", sortingChoice }
+            };
+            string url = Url.PageLink(pageName: "Menu");
+            return Redirect(url + qb);
         }
 
         public async Task<IActionResult> OnPostFill()
@@ -55,6 +64,7 @@ namespace PizzaWebsite.Pages
 
         public async Task<IActionResult> OnPostDeleteTests()
         {
+            /*
             if (testsId == null)
                 return Page();
 
@@ -62,8 +72,8 @@ namespace PizzaWebsite.Pages
             {
                 await _service.DeletePizza(id);
             }
-
-            /*
+            */
+            
             var pizzas = await _service.GetPizzas();
 
             foreach (var pizza in pizzas)
@@ -71,7 +81,7 @@ namespace PizzaWebsite.Pages
                 if (pizza.ImageLocation == "")
                     await _service.DeletePizza(pizza.PizzaId);
             }
-            */
+            
 
             return RedirectToPage();
         }

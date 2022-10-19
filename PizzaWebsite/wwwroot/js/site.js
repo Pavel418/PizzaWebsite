@@ -147,6 +147,8 @@ const screenWidth = window.screen.width;
 })();
 */
 
+/*
+ 
 let dec_btn = document.querySelectorAll('.decrement-btn');
 let inc_btn = document.querySelectorAll('.increment-btn');
 
@@ -155,8 +157,8 @@ dec_btn.forEach(element => element.addEventListener("click", function dec() {
     var id = element.id.split('-')[2];
     var label = document.querySelector('#button-value-' + id);
 
-    if (label.innerHTML <= 0) {
-        label.innerHTML = 0;
+    if (label.innerHTML <= 1) {
+        label.innerHTML = 1;
         element.classList.add('isInactive')
     }
     else {
@@ -169,4 +171,52 @@ inc_btn.forEach(element => element.addEventListener("click", function inc() {
     var id = element.id.split('-')[2];
     var label = document.querySelector('#button-value-' + id);
     label.innerHTML++;
+
 }));
+
+*/
+
+
+let dec_btn = document.querySelectorAll('.decrement-btn');
+let inc_btn = document.querySelectorAll('.increment-btn');
+let all_btn = [...inc_btn, ...dec_btn];
+
+
+dec_btn.forEach(element => element.addEventListener("click", function dec() {
+    var id = element.id.split('-')[2];
+    var label = document.querySelector('#button-value-' + id);
+
+    if (label.innerHTML <= 1) {
+        label.innerHTML = 1;
+        //element.classList.add('isInactive')
+    }
+    else {
+        //element.classList.remove('isInactive')
+        label.innerHTML--;
+    }
+}
+));
+inc_btn.forEach(element => element.addEventListener("click", function inc() {
+    var id = element.id.split('-')[2];
+    var label = document.querySelector('#button-value-' + id);
+    label.innerHTML++;
+
+
+}));
+
+
+
+all_btn.forEach(element => element.addEventListener("click", function check() {
+    var id = element.id.split('-')[2];
+    var label = document.querySelector('#button-value-' + id);
+
+    if (label.innerHTML <= 1) {
+        dec_btn.forEach(element => (() => { element.classList.add('isInactive') })());
+            
+    }
+    else if (label.innerHTML >= 1) {
+        dec_btn.forEach(element => (() => { element.classList.remove('isInactive') })());
+        
+    }
+}
+));

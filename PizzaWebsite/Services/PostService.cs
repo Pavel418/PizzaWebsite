@@ -45,6 +45,8 @@ namespace PizzaWebsite.Services
             var allPizzas = await GetPizzas(method);
             var chunk = allPizzas.Chunk(pizzasPerPage).ToList();
             index--;
+            if (chunk.Count == 0)
+                return new List<Pizza>();
             if (chunk.Count <= index)
                 throw new ArgumentOutOfRangeException(nameof(index), "out of range");
 
